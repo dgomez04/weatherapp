@@ -7,7 +7,6 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
@@ -16,7 +15,8 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_weather_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/weather.js */ \"./src/modules/weather.js\");\n\n\n\n(0,_modules_weather_js__WEBPACK_IMPORTED_MODULE_0__.getWeather)('London').then(data => console.log(data));\n\n\n//# sourceURL=webpack://weatherapp/./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_weather_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/weather.js */ \"./src/modules/weather.js\");\n\n\n\n// eventListener for location button to get weather data\ndocument.getElementById('location-btn').addEventListener('click',  () => {\n    const location = document.getElementById('location-input').value;\n    (0,_modules_weather_js__WEBPACK_IMPORTED_MODULE_0__.getWeather)(location).then(data => console.log(data));\n});\n\n\n\n\n\n\n\n//# sourceURL=webpack://weatherapp/./src/index.js?");
 
 /***/ }),
 
@@ -24,9 +24,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /*!********************************!*\
   !*** ./src/modules/weather.js ***!
   \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   getWeather: () => (/* binding */ getWeather)\n/* harmony export */ });\n\n\nconst key = \"89efdcf816b74db59b302555232408\" // api key \n\n\n// get weather data from api\nasync function getWeather(location) {\n    try {\n    const response = await fetch(\n        `https://api.weatherapi.com/v1/current.json?key=${key}&q=${location}&days=3&aqi=no&alerts=no`\n    );\n\n    if (!response.ok) {\n        throw new Error('Weather API request failed!');\n    }\n\n    const data = await response.json();\n\n    return data;\n    \n    } catch (error) {\n        console.log(error);\n        throw error; // rethrow to propagate the error to the outer catch block\n    }\n}\n\n\n\n//# sourceURL=webpack://weatherapp/./src/modules/weather.js?");
+eval("throw new Error(\"Module parse failed: Assigning to rvalue (20:11)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| \\n|         // if the cache is older than five minutes, do a new call to the api\\n>         if(Date.now() = cacheTimestamp < 300000) { \\n|             console.log('returned from cache')\\n|             return data;\");\n\n//# sourceURL=webpack://weatherapp/./src/modules/weather.js?");
 
 /***/ })
 
@@ -57,23 +57,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
