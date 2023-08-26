@@ -3,7 +3,6 @@
 const key = "89efdcf816b74db59b302555232408" // api key 
 
 
-// get weather data from api, store in cache, if the location is already stored, match it instead of doing the call
 export async function getWeather(location) {
     try {
 
@@ -17,9 +16,12 @@ export async function getWeather(location) {
         const cacheTimestamp = parseInt(cachedResponse.headers.get('cache-timestamp'));
 
         // if the cache is older than five minutes, do a new call to the api
-        if(Date.now() = cacheTimestamp < 300000) { 
+        if(Date.now() - cacheTimestamp < 300000) { 
             console.log('returned from cache')
             return data;
+        } else { 
+            console.log('Cached data expired, fetching new data')
+            await cache.delete(location); // delete the old cache
         }
     }
 
